@@ -126,9 +126,8 @@ h1 span { color: var(--violet); }
 .facts li { padding: 7px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 13px; font-weight: 500; }
 
 /* abas */
-.tabs { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 14px; scrollbar-width: none; }
-.tabs::-webkit-scrollbar { display: none; }
-.tab { flex: none; min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; font-size: 14px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px 6px; padding: 10px 0 10px; position: sticky; top: var(--topH, 64px); z-index: 15; background: var(--bg); border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+.tab { flex: 1 1 auto; min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; font-size: 14px; }
 .niche { max-width: 62ch; margin: 0 0 16px; padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 .tab[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 
@@ -435,6 +434,8 @@ function renderGrid() {
       '<button class="pick" type="button" data-i="' + i + '" aria-label="Escolher opções de ' + esc(p.nome) + '">Escolher</button></div></article>';
   }).join("");
 }
+function setTopH() { var t = document.querySelector(".top"); if (t) document.documentElement.style.setProperty("--topH", (t.offsetHeight + (parseFloat(getComputedStyle(t).top) || 0) - 1) + "px"); }
+setTopH(); window.addEventListener("resize", setTopH); window.addEventListener("load", setTopH);
 $("#tabs").addEventListener("click", function (e) { var b = e.target.closest(".tab"); if (!b) return; cat = b.dataset.cat; renderTabs(); renderGrid(); });
 $("#grid").addEventListener("click", function (e) { var b = e.target.closest(".pick"); if (b) openSheet(products[+b.dataset.i], b); });
 
