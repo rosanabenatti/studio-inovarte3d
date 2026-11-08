@@ -26,7 +26,7 @@ Depois disso, qualquer mudança na planilha aparece no site sozinha (o Google po
 | Coluna | Para que serve |
 |---|---|
 | `id` | Nome curto sem espaços (ex.: `chaveiro-fe`). |
-| `categoria` | Cria as abas do site (Chaveiros, Decoração, Brindes ou outra). |
+| `categoria` | Nicho do produto: Decoração, Organização, Presentes ou Brindes. Para aparecer em mais de um nicho, separe com `\|` (ex.: `Decoração\|Presentes`). O nicho Organização só aparece no site quando tiver produto. |
 | `nome`, `descricao` | Texto do produto. |
 | `imagem` | `img/nome-da-foto.jpg` (foto na pasta `img`) ou um link direto de imagem. |
 | `variantes` | Opções de preço no formato `rótulo=preço`, separadas por `\|`. Ex.: `1 unidade=3,00\|5 unidades=19,80`. Produto com preço único: `cada=17,90`. |
